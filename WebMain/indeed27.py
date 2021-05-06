@@ -2,12 +2,12 @@
 import requests
 from bs4 import BeautifulSoup
 
-#LIMIT = 50
-#URL = f"https://kr.indeed.com/jobs?q=&l=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%95%88%EC%82%B0&limit=" \
-#      f"50&fromage=3&radius=25&start={LIMIT}"
+LIMIT = 50
+URL = f"https://kr.indeed.com/jobs?q=&l=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%95%88%EC%82%B0&limit=" \
+      f"50&fromage=3&radius=25&start={LIMIT}"
 # 이건 스택오버플로우 싸이트
-NUMBER = 1
-URL = "https://stackoverflow.com/search?page={NUMBER}&tab=Relevance&q=blockchain"
+#NUMBER = 1
+#URL = "https://stackoverflow.com/search?page={NUMBER}&tab=Relevance&q=blockchain"
 def get_last_pages():
 
     result = requests.get(URL)
@@ -34,10 +34,10 @@ def extract_job(html):
     company = html.find("span", {"class": "company"})
     company_anchor = company.find("a")
 
-        if(company_anchor is not None):
-            company = company_anchor.string
-        else:
-             company = company.string
+    if(company_anchor is not None):
+        company = company_anchor.string
+    else:
+        company = company.string
 
 
     company = company.strip()
